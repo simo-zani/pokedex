@@ -540,8 +540,9 @@ body::before{
     margin-top: 50px;
   }
 
-  .message-img {
+  .message-img{
     height: 100px;
+    width: fit-content;
   }
 
   .message-txt {
