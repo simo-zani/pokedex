@@ -1,0 +1,415 @@
+@font-face {
+  font-family: 'PixelifySans';
+  src: url('fonts/PixelifySans-VariableFont_wght.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('fonts/SF-Pro-Display-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+    font-family: "SF Pro Display", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+    font-weight: 600;
+}
+
+body{
+    background: url('assets/background/main.jpg');
+    width: 100%;
+    height: 100dvh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    background: rgb(0,0,0,0.15);
+    backdrop-filter: blur(15px);
+}
+
+.main-container{
+    border: none;
+    width: 1300px;
+    height: 650px;
+    z-index: 1; /*in primo piano*/
+    border-radius: 50px;
+    background: linear-gradient(146deg, rgba(255, 0, 0, 0.8) 0%,
+                             rgba(143, 0, 0, 0.8) 100%);
+    backdrop-filter: blur(100px);
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+/*INPUT CONTAINER*/
+
+.input-container{
+    position: relative;
+    height: 65px;
+    margin-bottom: 20px;
+}
+
+.pkm-input{
+    font-family: "PixelifySans", sans-serif;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 500px;
+    height: 50px;
+    padding: 20px 20px;
+    border-radius: 99px;
+    border: 3px solid transparent;
+    background: rgb(0,0,0,0.15);
+    outline: none;
+    color: white;
+    font-weight: 100;
+    font-size: 25px;
+    text-transform: uppercase; /*anche scrivendo in minuscolo apparirà sempre in maiuscolo*/
+    transition: 0.25s border; /*anima il bordo quando va in focus*/
+}
+
+.pkm-input:focus{
+    border: 3px solid rgb(0,0,0,0.15);
+}
+
+.pkm-input::placeholder{
+    color: rgb(255,255,255,0.75);
+    text-transform: none; /* placeholder rimane in minuscolo */
+}
+
+.search-btn{
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    height: 50px;
+    transform: translateY(0); /* non serve più centrare verticalmente */
+    padding: 0 25px;
+    line-height: 50px; /* centra l'icona del "cerca" verticalmente nel contenitore btn (stesso valore dell'altezza per centrarlo)*/
+    font-size: 25px;
+    background: none;
+    border: 3px solid transparent;
+    display: flex;
+    cursor: pointer;
+}
+
+.search-icon {
+  color: white;
+}
+
+/*END INPUT CONTAINER*/
+
+/*SUGGESTION CONTAINER*/
+
+.suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 50px;
+  border: 3px solid transparent;
+  background: rgba(143, 0, 0, 0.9);
+  outline: none;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.suggestion-box li {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: white;
+  font-weight: 100;
+  text-align: center;       /* Centra il testo orizzontalmente */
+  display: flex;            /* Necessario per centrare anche verticalmente */
+  justify-content: center;  /* Centra orizzontalmente */
+  align-items: center;      /* Centra verticalmente */
+}
+
+.suggestion-box li:hover {
+  background-color: rgb(0,0,0,0.15);
+}
+
+.suggestion-box li.active {
+  background-color: rgb(0,0,0,0.25);
+}
+
+/*END SUGGESTION CONTAINER*/
+
+
+/*POKEMON INFO CONTAINER*/
+
+.pkm-info-container{
+    position: relative;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    gap: 100px;
+}
+
+.pkm-current-container{
+    position: relative;
+    width: 500px;
+    background: rgb(255, 255, 255, 0.2);
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* spazio uguale sopra, tra, e sotto */
+    gap: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+}
+
+.pkm-sprite-img{
+    width: 150px;
+    height: 150px;
+}
+
+.pkm-type-img{
+    width: 90px;
+}
+
+.pre-next-btn{
+    font-size: 30px;
+    background: none;
+    border: 3px solid transparent;
+    display: flex;
+    cursor: pointer;
+}
+
+.arrow-icon {
+  color: white;
+}
+
+.pkm-shiny-btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+    background: none;
+    border: 3px solid transparent;
+    display: flex;
+    cursor: pointer;
+    -webkit-text-stroke: 1px white; /* bordo bianco */
+    transition: color 0.3s ease;
+}
+
+.shiny-icon {
+    color: transparent;
+}
+
+.shiny-icon.active {
+  color: gold; /* pieno dorato */
+  -webkit-text-stroke: 0; /* rimuove il bordo */
+}
+
+.legendary-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 30px;
+    -webkit-text-stroke: 0.5px white;
+    color: transparent;
+}
+
+.pkm-prec-next-container{
+    width: 200px;
+    background: rgb(255, 255, 255, 0.2);
+    border-radius: 15px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.pkm-prec-next-info-container{
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* spazio uguale sopra, tra, e sotto */
+    gap: 5px;
+}
+
+.pkm-sprite-prec-next-img{
+    width: 120px;
+    height: 120px;
+}
+
+.pkm-next-name, .pkm-prec-name{
+    color: white;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.pkm-next-id, .pkm-prec-id{
+    color: white;
+    font-weight: 300;
+}
+
+.pkm-name{
+    color: white;
+    font-weight: 600;
+}
+
+.pkm-id{
+    color: white;
+    font-weight: 200;
+}
+
+.pkm-gen{
+    color: white;
+    font-weight: 200;
+}
+
+.pkm-description{
+    position: absolute;
+    width: 1100px;
+    background: rgb(255, 255, 255, 0.2);
+    border-radius: 15px;
+    bottom: 0px;
+    padding-bottom: 5px;
+}
+
+.pkm-descr{
+    text-align: center;
+    color: white;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+/*END POKEMON INFO CONTAINER*/
+
+/*POKEMON EVO CONTAINER*/
+
+.evo-title{
+    position: absolute;
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: 10px;
+    top: 0px;
+}
+
+.pkm-evo-forms-container{
+    position: relative;
+    align-items: flex-start;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    gap: 30px;
+}
+
+.pkm-evo-container, .pkm-form-container{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.pkm-evolutions{
+    width: 120px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* spazio uguale sopra, tra, e sotto */
+    gap: 5px;
+    background: rgb(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.pkm-form{
+    width: 170px;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* spazio uguale sopra, tra, e sotto */
+    gap: 5px;
+    background: rgb(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.pkm-evo-name, .pkm-evo-id, .pkm-evo-metod, .pkm-form-name{
+    color: white;
+    font-weight: 200;
+}
+
+.pkm-evo-img, .pkm-form-img{
+    width: 80px;
+    height: 80px;
+}
+
+.pkm-evo-type-img, .pkm-form-type-img{
+    width: 70px;
+}
+
+.pkm-evo-metod{
+    font-size: 11px;
+}
+
+/*END POKEMON EVO CONTAINER*/
+
+
+/*SECTION: MESSAGE*/
+
+.section-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin-top: 25%;
+}
+
+.message-txt{
+    font-weight: 500;
+    color: white;
+}
+
+.message-img{
+    height: 180px;
+    width: fit-content;
+}
+
+/*END SECTION: MESSAGE*/
