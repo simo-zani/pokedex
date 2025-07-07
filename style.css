@@ -413,3 +413,138 @@ body::before{
 }
 
 /*END SECTION: MESSAGE*/
+
+
+/***************************SMARTPHONE*****************************************/
+@media (max-width: 768px) {
+  .main-container {
+    width: 100%;
+    height: auto;
+    padding: 20px 10px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-container {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  padding: 10px 0;
+  backdrop-filter: blur(10px);
+}
+
+  .pkm-input {
+    width: 90%;
+    font-size: 18px;
+    height: 45px;
+  }
+
+  .search-btn {
+    display: none;
+  }
+
+  .suggestion-box {
+    font-size: 13px;
+    max-height: 150px;
+    width: 90%;
+    left: 5%;
+  }
+
+  /* Container generale: da colonna in mobile */
+  .pkm-info-container {
+    flex-direction: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding-top: 350px;
+    padding-bottom: 62px;
+  }
+
+  .pkm-current-container {
+    width: 230px;
+    padding: 0px;
+  }
+
+  .pkm-front, .pkm-back{
+    width: 100px;
+    height: 100px;
+  }
+
+  .pkm-prec-next-container{
+    width: 100px;
+    align-items: center;
+  }
+
+  .pre-next-btn{
+    display: none;
+  }
+
+  .pkm-prec-next-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bi-arrow-left-circle-fill, .bi-arrow-right-circle-fill{
+    display: none;
+  }
+
+  .pkm-sprite-prec-next-img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .pkm-next-name, .pkm-prec-name {
+    font-size: 13px;
+  }
+
+  .pkm-description {
+    position: absolute;
+    width: 400px;
+    margin-top: 15px;
+    padding: 10px;
+    bottom: 0px;
+  }
+
+  .pkm-descr {
+    font-size: 14px;
+  }
+
+  .pkm-evo-forms-container {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 20px;
+  }
+
+  .evo-title {
+    position: static;
+    font-size: 22px;
+  }
+
+  .pkm-evo-container,
+  .pkm-form-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .section-message {
+    margin-top: 50px;
+  }
+
+  .message-img {
+    height: 100px;
+  }
+
+  .message-txt {
+    font-size: 18px;
+  }
+}
