@@ -321,7 +321,7 @@ body::before{
     font-weight: 600;
     font-size: 25px;
     margin-bottom: 10px;
-    top: 0px;
+    top: 10px;
 }
 
 .pkm-evo-forms-container{
@@ -330,7 +330,7 @@ body::before{
     text-align: center;
     display: flex;
     justify-content: center;
-    padding-top: 40px;
+    padding-top: 50px;
     gap: 30px;
 }
 

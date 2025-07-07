@@ -232,6 +232,9 @@ async function updatePokemonInfo(pokemon){
       meowstic: ["meowstic-male", "meowstic-female"],
       morpeko: ["morpeko-full-belly", "morpeko-hangry"],
       oinkologne: ["oinkologne-male", "oinkologne-female"],
+      keldeo: ["keldeo-ordinary", "keldeo-resolute"],
+      meloetta: ["meloetta-aria", "meloetta-pirouette"],
+      kyurem: ["kyurem-black", "kyurem-white"],
 
       //Forme di Alola
       rattata: ["rattata-alola"],
@@ -429,6 +432,14 @@ async function updatePokemonInfo(pokemon){
     if(inputPkm.toLowerCase() === "oinkologne"){
       inputPkmSprite = "oinkologne-male";
     }
+    //KELDEO
+    if(inputPkm.toLowerCase() === "keldeo"){
+      inputPkmSprite = "keldeo-ordinary";
+    }
+    //MELOETTA
+    if(inputPkm.toLowerCase() === "meloetta"){
+      inputPkmSprite = "meloetta-aria";
+    }
 
     //input per la get pokemon (deve avere il nome della forma precisa)
     for (const base in formAliases) {
@@ -510,7 +521,6 @@ async function updatePokemonInfo(pokemon){
 
     //Cerco dentro l’array names il primo elemento n che ha la proprietà language.name uguale a 'it' (cioè italiano)
     //?.name è l’optional chaining, cioè: Se l’oggetto trovato non è undefined, accede alla sua proprietà name. Se invece è undefined (non trovato), non genera errore e restituisce undefined
-    const nome = names.find(n => n.language.name === 'it')?.name || pkmData.name; //se non trova il nome il linua 'it' assegna il valore di default che è quello in inglese
     const nomePrec = pkmPrecData.names.find(p => p.language.name === 'it')?.name || pkmPrecData.name;
     const nomeNext = pkmNextData.names.find(s => s.language.name === 'it')?.name || pkmNextData.name;
 
@@ -526,7 +536,7 @@ async function updatePokemonInfo(pokemon){
     const generazione = formatGeneration(generation.name);
 
     //setto nomi pkm
-    pkmTxt.textContent = nome.toUpperCase();
+    pkmTxt.textContent = inputPkmSprite.toUpperCase();
     pkmPrecTxt.textContent = nomePrec.toUpperCase();
     pkmNextTxt.textContent = nomeNext.toUpperCase();
 
